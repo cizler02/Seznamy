@@ -43,10 +43,32 @@ namespace Seznamy
                 Console.WriteLine(student.Popis);
             }
 
-        }
-    }
 
-    public class Student
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Počet: " + liststud.Count);
+
+            Console.WriteLine("Počet bodů:" + liststud.Sum(VyberBody));
+            Console.WriteLine("Počet bodů:" + liststud.Sum(x => x.Body));
+
+            Console.WriteLine("Počet bodů pro studenty s více než 14 body:" + liststud.Where(x => x.Body > 14).Sum(x => x.Body));
+            
+            var vybraniStudenti = liststud.Where(x => x.Body > 14).ToList();
+
+            vybraniStudenti.ForEach(x => Console.WriteLine(x.Popis));   
+
+
+
+
+        }
+
+        public static int VyberBody(Student students)
+        {
+            return students.Body;
+        }
+
+        public class Student
     {
         public Student() { }
 
